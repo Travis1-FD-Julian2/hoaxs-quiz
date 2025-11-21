@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Quiz</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .question { margin-bottom: 15px; }
+        button { margin-top: 20px; padding: 10px 20px; font-size: 16px; cursor: pointer; }
+        #result { margin-top: 20px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>True or False Quiz</h1>
+
+    <div class="question">
+        <p>1. All videos on the FYP (For You Page) are always valid and reliable.</p>
+        <input type="radio" name="q1" value="false"> False<br>
+        <input type="radio" name="q1" value="true"> True<br>
+    </div>
+
+    <div class="question">
+        <p>2. You can always trust your friends when they send you new online videos.</p>
+        <input type="radio" name="q2" value="false"> False<br>
+        <input type="radio" name="q2" value="true"> True<br>
+    </div>
+
+    <div class="question">
+        <p>3. Scientific journals are trusted sources commonly used by scholars.</p>
+        <input type="radio" name="q3" value="true"> True<br>
+        <input type="radio" name="q3" value="false"> False<br>
+    </div>
+
+    <div class="question">
+        <p>4. Academic websites provide official information that we can always rely on.</p>
+        <input type="radio" name="q4" value="true"> True<br>
+        <input type="radio" name="q4" value="false"> False<br>
+    </div>
+
+    <div class="question">
+        <p>5. News shared on social media is always accurate and fact-checked.</p>
+        <input type="radio" name="q5" value="false"> False<br>
+        <input type="radio" name="q5" value="true"> True<br>
+    </div>
+
+    <div class="question">
+        <p>6. Government websites are considered official and generally trustworthy sources of information.</p>
+        <input type="radio" name="q6" value="true"> True<br>
+        <input type="radio" name="q6" value="false"> False<br>
+    </div>
+
+    <div class="question">
+        <p>7. Viral online content is always created by experts.</p>
+        <input type="radio" name="q7" value="false"> False<br>
+        <input type="radio" name="q7" value="true"> True<br>
+    </div>
+
+    <div class="question">
+        <p>8. Fact-checking a video before sharing is important to avoid misinformation.</p>
+        <input type="radio" name="q8" value="true"> True<br>
+        <input type="radio" name="q8" value="false"> False<br>
+    </div>
+
+    <div class="question">
+        <p>9. Online influencers always give accurate and unbiased information.</p>
+        <input type="radio" name="q9" value="false"> False<br>
+        <input type="radio" name="q9" value="true"> True<br>
+    </div>
+
+    <div class="question">
+        <p>10. Cross-referencing information from many good sources helps confirm accuracy.</p>
+        <input type="radio" name="q10" value="true"> True<br>
+        <input type="radio" name="q10" value="false"> False<br>
+    </div>
+
+    <button onclick="checkQuiz()">Submit</button>
+
+    <div id="result"></div>
+    <div id="explanations"></div>
+
+    <script>
+        function checkQuiz() {
+            let score = 0;
+            const answers = {
+                q1: "false",
+                q2: "false",
+                q3: "true",
+                q4: "true",
+                q5: "false",
+                q6: "true",
+                q7: "false",
+                q8: "true",
+                q9: "false",
+                q10: "true"
+            };
+
+            for (let q in answers) {
+                const userAns = document.querySelector(`input[name="${q}"]:checked`);
+                if (userAns && userAns.value === answers[q]) score++;
+            }
+
+            document.getElementById("result").textContent = `You scored ${score} out of 10.`;
+
+            const explanationText = `
+                <p><strong>1.</strong> False – Not all FYP videos are reliable.</p>
+                <p><strong>2.</strong> False – Friends may share videos without checking.</p>
+                <p><strong>3.</strong> True – Scientific journals check information carefully.</p>
+                <p><strong>4.</strong> True – Academic websites usually provide reliable info.</p>
+                <p><strong>5.</strong> False – Social media news is not always checked.</p>
+                <p><strong>6.</strong> True – Government sites give official information.</p>
+                <p><strong>7.</strong> False – Viral content is not always made by experts.</p>
+                <p><strong>8.</strong> True – Fact-checking stops misinformation.</p>
+                <p><strong>9.</strong> False – Influencers can be biased or mistaken.</p>
+                <p><strong>10.</strong> True – Checking many sources helps confirm accuracy.</p>`;
+
+            document.getElementById("explanations").innerHTML = explanationText;
+        }
+    </script>
+</body>
+</html>
